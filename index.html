@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ronii</title>
+    <style>
+        body {
+            background-image: url("Untitled\ Project.jpg"); /* Update with a birthday poster */
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun font for birthday theme */
+        }
+        .countdown {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ffcc00; /* Birthday-themed border */
+        }
+        .countdown h1 {
+            font-size: 48px;
+            margin: 0;
+            color: #ff69b4; /* Pink color for birthday */
+        }
+        .countdown p {
+            font-size: 24px;
+            margin: 5px 0;
+        }
+        .birthday-message {
+            font-size: 36px;
+            color: #ff4500; /* Orange color for birthday message */
+            margin-bottom: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="countdown">
+    <h1 class="birthday-message">Happy Birthday Ronii..!</h1>
+    <h1 id="timer">00:00:00</h1>
+    <p id="message"></p>
+</div>
+
+<script>
+    // Set the date we're counting down to
+    const countDownDate = new Date("Feb 12, 2025 23:59:59").getTime();
+
+    // Update the countdown every 1 second
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML = 
+            (days < 10 ? "0" : "") + days + ":" + 
+            (hours < 10 ? "0" : "") + hours + ":" + 
+            (minutes < 10 ? "0" : "") + minutes + ":" + 
+            (seconds < 10 ? "0" : "") + seconds; 
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+            document.getElementById("message").innerHTML = "Opening the file...";
+            window.open("https://youtu.be/5oJZlTtr9Rs?si=F04HEUXWWMdsv5DB", "_blank"); // Change the URL to your file
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
